@@ -1,67 +1,92 @@
 import { prompt } from "./prompt.js";
 
-console.log("ADDITION-MASTER ™️");
+const LIMIT_NUMBER = 100000000000000;
+const OPERATIONS = {
+  1: {
+    symbol: "+",
+    name: "Addition",
+    fn: (a, b) => a + b,
+  },
+  2: {
+    symbol: "-",
+    name: "Soustraction",
+    fn: (a, b) => a - b,
+  },
+  3: {
+    symbol: "*",
+    name: "Multiplication",
+    fn: (a, b) => a * b,
+  },
+  4: {
+    symbol: "/",
+    name: "Division",
+    fn: (a, b) => a / b,
+  },
+};
 
-console.log(`Choose an operator :
-1. Addition
-2. Soustraction
-3. Multiplication
-4. Division`);
+const promptOperator = () => {
+  console.log(`\nChoose an operator :
+    1. ${OPERATIONS[1].name}
+    2. ${OPERATIONS[2].name}
+    3. ${OPERATIONS[3].name}
+    4. ${OPERATIONS[4].name}`);
 
-let operator = 0;
-
-while (operator === 0) {
-  const tempOperator = Number(prompt("Enter the operator : "));
-
-  if (
-    tempOperator !== 1 &&
-    tempOperator !== 2 &&
-    tempOperator !== 3 &&
-    tempOperator !== 4
-  ) {
-    console.log("\nError : operator is not 1, 2, 3 or 4 ! Retry.");
-  } else {
-    operator = tempOperator;
-  }
-}
-
-const firstNumber = Number(prompt("Enter the first number : "));
-
-if (Number.isNaN(firstNumber) || Math.abs(firstNumber) > 100000000000000) {
-  console.log(
-    "Error : firstNumber is not a number or is too big / too small (max: 100000000000000)"
-  );
-  process.exit(1);
-}
-
-const secondNumber = Number(prompt("Enter the second number : "));
-
-if (Number.isNaN(secondNumber) || Math.abs(secondNumber) > 100000000000000) {
-  console.log(
-    "Error : secondNumber is not a number or is too big / too small (max: 100000000000000)"
-  );
-  process.exit(1);
-}
-
-if (operator === 4 && secondNumber === 0) {
-  console.log("Error : division by 0");
-  process.exit(1);
-}
-
-switch (operator) {
-  case 1:
-    console.log("The result of addition is : ", firstNumber + secondNumber);
-    break;
-  case 2:
-    console.log("The result of soustraction is : ", firstNumber - secondNumber);
-    break;
-  case 3:
+  const operator = Number(prompt("\nEnter the operator : "));
+  if (!OPERATIONS.hasOwnProperty(operator)) {
     console.log(
-      "The result of multiplication is : ",
-      firstNumber * secondNumber
+      "\nError : You can only choose an operator between  1, 2, 3 or 4."
     );
-    break;
-  case 4:
-    console.log("The result of division is : ", firstNumber / secondNumber);
-    break;
-}
+    return promptOperator();
+  } else return operator;
+};
+
+const validateNumber = (number) => {
+  if (Math.abs(number) < LIMIT_NUMBER && !Number.isNaN(number)) return number;
+  console.log(
+    `Error : number is not a number or is too big / too small(max: ${LIMIT_NUMBER})`
+  );
+  process.exit(1);
+};
+
+const promptNumber = (message) => {
+  const number = Number(prompt(message));
+  return validateNumber(number);
+};
+
+const getMessageResult = (
+  operator,
+  nameOperator,
+  firstNumber,
+  secondNumber,
+  result
+) => {
+  return `The result of ${nameOperator} ${firstNumber} ${operator} ${secondNumber} is : ${result}`;
+};
+
+const calculateResult = (operator, firstNumber, secondNumber) => {
+  return getMessageResult(
+    OPERATIONS[operator].symbol,
+    OPERATIONS[operator].name,
+    firstNumber,
+    secondNumber,
+    OPERATIONS[operator].fn(firstNumber, secondNumber)
+  ).toLowerCase();
+};
+
+const main = () => {
+  console.log("ADDITION-MASTER ™️");
+
+  const operator = promptOperator();
+
+  const firstNumber = promptNumber("\nEnter the first number : ");
+  const secondNumber = promptNumber("Enter the second number : ");
+
+  if (operator === 4 && secondNumber === 0) {
+    console.log("Error : division by 0");
+    process.exit(1);
+  }
+
+  console.log(calculateResult(operator, firstNumber, secondNumber));
+};
+
+main();
