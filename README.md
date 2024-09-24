@@ -45,5 +45,5 @@ Follow these steps to install and run **Addition-Master™️** locally.
 
 3. **Run the project** on cli.
    ```bash
-   node script.js
+   node yourFile.js
    ```
