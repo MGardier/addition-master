@@ -15,7 +15,7 @@ The goal of **Operation-Master™️** is to provide a quick and easy way to per
 
 ## 🛠️ Installation
 
-Follow these steps to install and run **Addition-Master™️** locally.
+Follow these steps to install and run **Operation-Master™️** locally.
 
 ### Prerequisites
 
