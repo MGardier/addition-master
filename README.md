@@ -26,7 +26,7 @@ Follow these steps to install and run **Operation-Master™️** locally.
 1. **Clone this repository** to your local machine.
 
    ```bash
-   git clone https://github.com/your-username/addition-master.git
+   git clone https://github.com/your-username/operation-master.git
    ```
 
 2. **Install all dependencies** using either `npm` or `pnpm`.
