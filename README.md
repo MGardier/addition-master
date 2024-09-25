@@ -4,7 +4,7 @@ Welcome to **Operation-Master**, a simple command-line calculator that allows yo
 
 ## 🎯 Project Objective
 
-The goal of **Addition-Master™️** is to provide a quick and easy way to perform arithmetic calculations in the command line. You choose an operation, input two numbers, and instantly get the result, with built-in error handling for common issues like division by zero.
+The goal of **Operation-Master™️** is to provide a quick and easy way to perform arithmetic calculations in the command line. You choose an operation, input two numbers, and instantly get the result, with built-in error handling for common issues like division by zero.
 
 ## ⚙️ Features
 
