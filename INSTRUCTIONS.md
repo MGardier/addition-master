@@ -2,7 +2,7 @@
 
 Welcome, Agent, to **Operation Master**. This project challenges you to build a command-line calculator that handles basic arithmetic operations: addition, subtraction, multiplication, and division. Your mission, should you choose to accept it, is to construct a JavaScript script that executes these tasks with maximum efficiency and clarity. The clock is ticking—you have 15 minutes before this project self-destructs.
 
-## 🚀 Règles du jeu
+## 🚀 Rules
 
 1. **Display available operations:**  
    The program must first display the different arithmetic operations available and prompt the user to select one.
